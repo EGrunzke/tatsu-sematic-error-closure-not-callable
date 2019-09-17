@@ -1,0 +1,26 @@
+@@grammar :: Bug
+
+start
+    =
+    sequence $
+    ;
+
+sequence::Sequence
+    =
+    children:{term [',']}+
+    ;
+
+term
+    =
+    parens | word
+    ;
+
+parens
+    =
+    '(' ~ @:sequence ')'
+    ;
+
+word::Word
+    =
+    val:/\w+/
+    ;
